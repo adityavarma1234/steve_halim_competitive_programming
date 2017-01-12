@@ -1,0 +1,12 @@
+uva 10550 combination lock
+uva 11044 searching for nessy
+uva 11364 parking
+uva 11498 division of nlogonia
+uva 11547 automatic answer
+uva 11727 cost cutting
+uva 12250 language detection
+uva 12279 emoogle balance
+uva 12289 one two three
+uva 12372 packing for holiday
+uva 12403 save setu
+uva 12577
