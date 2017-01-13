@@ -1,12 +1,7 @@
 uva 10550 combination lock
   did not understand 2*360 + 30*9 + 360 + 30*9 + 30*9 = 1790 != 1350
-uva 11364 parking
-uva 11498 division of nlogonia
-uva 11547 automatic answer
-uva 11727 cost cutting
-uva 12250 language detection
-uva 12279 emoogle balance
-uva 12289 one two three
-uva 12372 packing for holiday
 uva 12403 save setu
 uva 12577
+
+"HELLO", "HOLA", "HALLO", "BONJOUR", "CIAO", "ZDRAVSTVUJTE"
+"ENGLISH", "SPANISH", "GERMAN", "FRENCH", "ITALIAN", "RUSSIAN"
