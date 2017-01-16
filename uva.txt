@@ -3,9 +3,7 @@ uva 10550 combination lock
 10114 loansome
 10300 ecological
 10963 swallowing ground
-11559 event plannning
 11679 sub prime
-12157 tariff
 ioi 2010 cludeo
 ioi 2010 memory
 
