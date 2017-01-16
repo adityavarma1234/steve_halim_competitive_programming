@@ -1,26 +1,20 @@
 uva 10550 combination lock
   did not understand 2*360 + 30*9 + 360 + 30*9 + 30*9 = 1790 != 1350
-00621 secret
 10114 loansome
 10300 ecological
 10963 swallowing ground
 11332 summing digits
 11559 event plannning
 11679 sub prime
-11764 jumping mario
-11799 horror dash
-11942 lumberjack
-12015 google
 12157 tariff
 12468 zapping
-12503 robot 
-12554 a special song
-ioi 2010 cludeo 
+12503 robot
+ioi 2010 cludeo
 ioi 2010 memory
 
 00119 greedy
 00573 snail
-00661 blowing 
+00661 blowing
 10141 proposal
 10324 zeros
 10424 love calculator
@@ -28,11 +22,9 @@ ioi 2010 memory
 11507 bender
 11586 train
 11661 burger
-11683 laser 
-11687 digits 
-111956 brain 
+11683 laser
+11687 digits
+111956 brain
 12478 hardest
 ioi 2009 garage
 ioi 2009 poi
-
-
