@@ -1,7 +1,6 @@
 uva 10550 combination lock
   did not understand 2*360 + 30*9 + 360 + 30*9 + 30*9 = 1790 != 1350
 10114 loansome
-10300 ecological
 10963 swallowing ground
 11679 sub prime
 ioi 2010 cludeo
