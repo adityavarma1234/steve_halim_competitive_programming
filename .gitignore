@@ -56,3 +56,4 @@ dkms.conf
 !*/
 # Whitelist the file you're interested in.
 !*.cc
+!*.cpp
