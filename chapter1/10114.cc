@@ -6,42 +6,41 @@ long double arr[104];
 
 int main()
 {
-    int a, b;
-    long double c, d;
+    int months, month_deps;
+    long double down_payment, loan_amount;
     while(1)
     {
-        cin >> a >> c >> d >> b;
-        if(a<0)
+        cin >> months >> down_payment >> loan_amount >> month_deps;
+        if(months<0)
             break;
         for(int i=0;i<104;i++)
         {
             arr[i] = 0.0;
         }
-        for(int i=0;i<b;i++)
+        for(int i=0;i < month_deps;i++)
         {
             int j ;
             cin >> j;
             cin >> arr[j];
-//            cout << j <<  " " << arr[j] << endl;
         }
         int i=0;
-        long double value = c + d;
-        long double owed = d;
+        long double curr_value = down_payment + loan_amount;
+        long double owed = loan_amount;
         long double prev_dep;
-        while(i <= a)
+        long double month_paid_amount = (loan_amount)/(long double)(months);
+        while(i <= months)
         {
             if(arr[i] != 0.0)
               prev_dep = arr[i];
-            value = value * (1.0 - prev_dep);
-            cout << "owed " << owed << " value " << value << endl;
-            if(owed < value)
+            curr_value = curr_value * ((long double)1.0 - prev_dep);
+            if(owed < curr_value)
             {
                 break;
             }
-            owed = owed - c;
+            owed = owed - month_paid_amount;
             i++;
         }
-        if(i==0)
+        if(i==1)
         {
           cout << "1 month" << endl;
         }
