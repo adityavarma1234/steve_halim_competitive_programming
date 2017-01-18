@@ -5,7 +5,6 @@ uva 10550 combination lock
 11507 bender
 11683 laser
 11687 digits
-11956 brain
 12478 hardest
 ioi 2009 garage
 ioi 2009 poi
