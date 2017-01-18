@@ -1,16 +1,8 @@
 uva 10550 combination lock
   did not understand 2*360 + 30*9 + 360 + 30*9 + 30*9 = 1790 != 1350
-ioi 2010 cludeo
-ioi 2010 memory
-
-00119 greedy
 00573 snail
-10141 proposal
-10324 zeros
-10424 love calculator
-10919 prerequisites
+
 11507 bender
-11586 train
 11661 burger
 11683 laser
 11687 digits
