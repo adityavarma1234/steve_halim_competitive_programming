@@ -3,7 +3,6 @@ uva 10550 combination lock
 00573 snail
 
 11507 bender
-11661 burger
 11683 laser
 11687 digits
 11956 brain
