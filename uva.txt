@@ -5,6 +5,8 @@ uva 10550 combination lock
 11507 bender
 11683 laser
 11687 digits
-12478 hardest
 ioi 2009 garage
 ioi 2009 poi
+
+{"OBIDAIBKR", "RKAULHISP", "SADIYANNO", "HEISAWHIA", "IRAKIBULS", "MFBINTRNO", "UTOYZIFAH", "LEBSYNUNE", "EMOTIONAL"}
+{"RAKIBUL", "ANINDYA", "MOSHIUR", "SHIPLU", "KABIR", "SUNNY", "OBAIDA", "WASI"}
