@@ -13,7 +13,6 @@ game card
 10315 poker hands
 10646 what is the card?
 11225 tarot scores
-11678 cards exchange
 12247 jollo
 
 game chess
