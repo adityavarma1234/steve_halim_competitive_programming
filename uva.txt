@@ -1,8 +1,37 @@
 uva 10550 combination lock
   did not understand 2*360 + 30*9 + 360 + 30*9 + 30*9 = 1790 != 1350
 00573 snail
-
 11507 bender
 11683 laser
 11687 digits
 ioi 2009 garage
+
+game card
+00462 bridge evaluator
+00555 bridge hands
+10205 stack them up
+10315 poker hands
+10646 what is the card?
+11225 tarot scores
+11678 cards exchange
+12247 jollo
+
+game chess
+uva 00255 correct move
+uva 00278 chess
+uva 00696 how many knights
+uva 10196 chcek the check
+uva 10284 chess board in fen
+uva 10849 move the bishop
+uva 11494 queen
+
+game others
+00340 master mind
+00489 hangman
+00947 master mind helper
+10189 minesweeper
+10279 mine sweeper
+10409 die game
+10530 guessing game
+11459 snakes and ladders
+12239 bingo
