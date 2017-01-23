@@ -4,8 +4,8 @@ using namespace std;
 
 int main()
 {
-//    freopen("input.txt", "r", stdin);
-//    freopen("output.txt", "w", stdout);
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
     int princess[3], prince[2];
     int gpr[3], gp[2];
     while(1)
@@ -33,7 +33,7 @@ int main()
         int cnt = 0;
         for(int i=0; i<2; i++)
         {
-            for(int j=0; j<3; j++)
+            for(int j=2; j>=0; j--)
             {
                 if(prince[i] < princess[j] && gpr[j] == 0)
                 {
@@ -57,24 +57,20 @@ int main()
                 for(int i=0; i<3; i++) if(princess[i] == res)
                     {
                         f=false;
-                        res++;
                         break;
                     }
                 for(int i=0; i<2; i++) if(prince[i] == res)
                     {
                         f = false;
-                        res++;
                         break;
                     }
                 if(f) break;
             }
-            if(res<=52)
             cout << res << endl;
-            else cout << -1 << endl;
         }
         else
         {
-            int res = princess[1];
+            int res = princess[2];
             for(int i=2; i>=0; i--)
             {
                 if(gpr[i] == 0)
@@ -91,7 +87,6 @@ int main()
                     if(princess[i] == res)
                     {
                         f=false;
-                        res++;
                         break;
                     }
                 }
@@ -100,16 +95,12 @@ int main()
                     if(prince[i] == res)
                     {
                         f = false;
-                        res++;
                         break;
                     }
                 }
                 if(f) break;
             }
-            if(res<=52)
             cout << res << endl;
-            else
-                cout << -1 << endl;
         }
     }
 }

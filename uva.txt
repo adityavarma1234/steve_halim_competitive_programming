@@ -7,9 +7,6 @@ uva 10550 combination lock
 ioi 2009 garage
 
 game card
-00462 bridge evaluator
-00555 bridge hands
-10205 stack them up
 10315 poker hands
 10646 what is the card?
 11225 tarot scores
