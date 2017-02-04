@@ -11,31 +11,33 @@ int main()
     {
         cin >> h >> u >> d >> f;
         if(h==0) break;
-        long double distance,fatigue,distanceclimbed;
-        distance = 0;
+        long double fatigue,distanceclimbed,heightafterclimbing,heightaftersliding,initialheight;
         int days = 0;
-        distanceclimbed = u;
-        fatigue = u*f/100;
-        long double distance_day=0, distance_night=0;
-        while(distance <= h &&  distance >= 0)
+        distanceclimbed = 0;
+        fatigue = u*f/(long double)100;
+        initialheight =0;
+        heightafterclimbing = 0;
+        while(heightafterclimbing <= h &&  heightafterclimbing >= 0)
         {
-//            distance_day = distance + (u - days*fatigue);
-            distanceclimbed = distanceclimbed - fatigue*distanceclimbed;
-            distance_day = distance + distanceclimbed;
+            distanceclimbed = u - fatigue*days;
             days++;
-            distance = distance_day;
-            if(distance > h )
+            if(distanceclimbed > 0)
+            heightafterclimbing = initialheight + distanceclimbed;
+            else heightafterclimbing = initialheight;
+//            if(heightafterclimbing > h || heightafterclimbing < 0)
+//            {
+//                break;
+//            }
+            heightaftersliding  = heightafterclimbing - d ;
+//            cout << "day " << days << " initial height " << initialheight << " distance climbed " << distanceclimbed << " height after climbing " << heightafterclimbing << " height after lsidin " << heightaftersliding << endl;
+            initialheight = heightaftersliding;
+            if(initialheight < 0)
             {
-                break;
-            }
-            distance_night = distance - d ;
-            distance = distance_night;
-            if(distance < 0)
-            {
+                initialheight = 0;
                 break;
             }
         }
-        if(distance >= h) cout << "success on day "<< days << endl;
+        if(heightafterclimbing > h) cout << "success on day "<< days << endl;
         else cout << "failure on day " << days << endl;
     }
 }
