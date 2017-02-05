@@ -20,13 +20,13 @@ int main()
             dq.push_back(dq.front());
             dq.pop_front();
         }
-        cout << "Discarded cards: ";
+        cout << "Discarded cards:";
         int len = seq.size();
         for(int i=0;i<len;i++)
         {
-            cout << seq[i];
+            cout << " " << seq[i];
             if(i != len-1)
-                cout  << ", ";
+                cout  << ",";
         }
         cout << endl;
         cout << "Remaining card: " << dq.front() << endl;

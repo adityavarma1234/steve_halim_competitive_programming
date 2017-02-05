@@ -29,6 +29,7 @@ int main()
         }
         printf("Set #%d\n", cnt);
         printf("The minimum number of moves is %d.\n", ans);
+        cout << endl;
     }
     return 0;
 }

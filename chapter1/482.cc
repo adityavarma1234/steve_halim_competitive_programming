@@ -1,9 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
-vector<pair<string, string> >v;
-vector<string> ind;
+vector<pair<int, string> >v;
+vector<int> ind;
 vector<string> nums;
-pair<string, string> p;
+pair<int, string> p;
 int main()
 {
     freopen("input.txt",  "r", stdin);
@@ -12,26 +12,28 @@ int main()
     cin >> t;
     string in,fin;
     getline(cin, in);
-    getline(cin, in);
-    while(t--)
+     while(t--)
     {
+            getline(cin, in);
         getline(cin, in);
         v.clear();
         ind.clear();
         nums.clear();
-        istringstream ss(in);
-        string tmp;
-        while(getline(ss, tmp, ' '))
+        stringstream ss(in);
+        int tmp;
+        while(ss >> tmp)
         {
             ind.push_back(tmp);
         }
+
+        string tm;
         getline(cin, in);
         istringstream sa(in);
-        while(getline(sa, tmp, ' '))
+        while(getline(sa, tm, ' '))
         {
-            nums.push_back(tmp);
+            nums.push_back(tm);
         }
-        for(int i=0;i<nums.size();i++)
+        for(int i=0;i<min(nums.size(),ind.size());i++)
         {
             p.first = ind[i];
             p.second = nums[i];
@@ -42,7 +44,6 @@ int main()
         {
             cout << v[i].second << endl;
         }
-        getline(cin, in);
         if(t)
         cout << endl;
     }
