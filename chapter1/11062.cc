@@ -1,23 +1,27 @@
 #include<bits/stdc++.h>
 using namespace std;
-
+string in,tmp;
+set<string> out;
+set<string>::iterator it;
 int main()
 {
-//    freopen("input.txt", "r", stdin);
-//    freopen("output.txt", "w", stdout);
-    string in;
-    set<string> out;
-    while(getline(cin,in))
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    tmp = "";
+    while(getline(cin, in))
     {
         int len = in.size();
-        string tmp = "";
-        for(int i=0; i<in.size(); i++)
+        for(int i=0;i<len;i++)
         {
-            if(in[i] >= 'a' && in[i] <= 'z')
-            {
+            if(in[i] == '-' && i == len-1)
+                continue;
+            else if(in[i] == '-')
                 tmp += string(1, in[i]);
+            else if(in[i] >= 'a' && in[i]<='z')
+            {
+                tmp += string(1,in[i]);
             }
-            else if(in[i]>='A' && in[i] <='Z')
+            else if(in[i]>= 'A' && in[i] <= 'Z')
             {
                 tmp += string(1, in[i]);
             }
@@ -35,8 +39,9 @@ int main()
             }
         }
     }
-    set<string>::iterator it;
-    for(it =out.begin(); it!=out.end(); it++)
+    for(it = out.begin(); it != out.end(); it++)
+    {
         cout << *it << endl;
+    }
     return 0;
 }
