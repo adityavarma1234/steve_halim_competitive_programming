@@ -6,7 +6,15 @@ struct records
     int time;
     int solved;
 };
+struct record
+{
+    int team;
+    char status;
+    int time;
+    char problem;
+};
 vector<records> v;
+vector<record> in;
 int teamscore[26][7];
 int solvedproblems[26][7];
 int attemptteams[26];
@@ -25,6 +33,12 @@ bool compare(records a, records b)
     return false;
 
 }
+bool c(record a, record b)
+{
+    if(a.time > b.time)
+        return false;
+    return true;
+}
 int main()
 {
     freopen("input.txt", "r", stdin);
@@ -37,22 +51,25 @@ int main()
     while(t--)
     {
         v.clear();
-        for(int i=0;i<26;i++)
+        in.clear();
+        for(int i=0; i<26; i++)
         {
-            for(int j=0;j<7;j++)
+            for(int j=0; j<7; j++)
             {
                 teamscore[i][j] = 0;
                 solvedproblems[i][j] = 0;
             }
             attemptteams[i] = 0;
         }
+
+        int cnt,team,time, hour,minutes;
+        char problemsolved,status;
         int n = 0;
         while(getline(cin, tmp) && tmp!="")
         {
 //        cout << "in "<< tmp << endl;
             istringstream ss(tmp);
-            int cnt = 0,team,time, hour,minutes;
-            char problemsolved,status;
+            cnt = 0;
             while(getline(ss, tmp, ' '))
             {
                 if(cnt == 0)
@@ -91,6 +108,20 @@ int main()
                 }
                 cnt++;
             }
+            record rr;
+            rr.time = time;
+            rr.problem = problemsolved;
+            rr.status = status;
+            rr.team = team;
+            in.push_back(rr);
+        }
+        sort(in.begin(), in.end(), c);
+        for(int i=0; i<in.size(); i++)
+        {
+            problemsolved = in[i].problem;
+            team = in[i].team;
+            status = in[i].status;
+            time = in[i].time;
             if(status=='Y' && solvedproblems[team][problemsolved-'A'] == 0)
             {
 //            cout << "solved " << team << " " << problemsolved-'A' << " " << teamscore[team][problemsolved-'A'] + time << endl;
@@ -118,7 +149,7 @@ int main()
                 {
                     if(solvedproblems[i][j])
                     {
-                    cout << "team " << i << " solved" << j << endl;
+//                        cout << "team " << i << " solved" << j << endl;
                         cnt++;
                         r.time += teamscore[i][j];
                     }
@@ -128,7 +159,8 @@ int main()
             }
         }
         sort(v.begin(), v.end(), compare);
-        int ranking = 1,cnt=0;
+        int ranking = 1;
+        cnt = 0;
         r = v[0];
         cout << "RANK" << " TEAM" << " PRO/SOLVED" << " TIME" << endl;
         for(int i=0; i<v.size(); i++)
@@ -148,7 +180,7 @@ int main()
                 printf("%4d %4d\n",ranking, v[i].team);
             r = v[i];
         }
-        if(t) cout << endl;
+            if(t) cout << endl;
     }
-    return 0;
 }
+
