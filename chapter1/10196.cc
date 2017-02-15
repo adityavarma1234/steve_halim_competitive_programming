@@ -3,7 +3,7 @@
 using namespace std;
 char board[8][8];
 char tmpboard[8][8];
-
+int ans=-2;
 bool valid(int r, int c)
 {
     if(r>=0 && r<8 && c>=0 && c<8)
@@ -16,10 +16,10 @@ void pawnattackwhite(int r, int c)
     int x,y;
     x = r-1;
     y = c+1;
-    if(valid(x,y) && (board[x][y]=='.'))
+    if(valid(x,y) && (board[x][y]=='.' || board[x][y]=='k'))
         board[x][y] = 'A';
     y = c-1;
-    if(valid(x,y) && (board[x][y]=='.'))
+    if(valid(x,y) && (board[x][y]=='.'|| board[x][y]=='k'))
         board[x][y] = 'A';
 }
 
@@ -28,20 +28,20 @@ void pawnattackblack(int r, int c)
     int x,y;
     x = r+1;
     y = c+1;
-    if(valid(x,y) && (board[x][y]=='.'))
+    if(valid(x,y) && (board[x][y]=='.'|| board[x][y]=='K'))
         board[x][y] = 'A';
     y = c-1;
-    if(valid(x,y) && (board[x][y]=='.'))
+    if(valid(x,y) && (board[x][y]=='.'|| board[x][y]=='K'))
         board[x][y] = 'A';
 }
 
-void rookattack(int r, int c)
+void rookattackwhite(int r, int c)
 {
     int x = r;
     int y = c-1;
     while(y>=0)
     {
-        if(valid(x, y) && (board[x][y]=='.' || board[x][y] == 'A'))
+        if(valid(x, y) && (board[x][y]=='.' || board[x][y] == 'A'|| board[x][y]=='k'))
         {
             board[x][y] = 'A';
             y--;
@@ -52,7 +52,7 @@ void rookattack(int r, int c)
     y= c+1;
     while(y<8)
     {
-        if(valid(x, y) && (board[x][y]=='.' || board[x][y] == 'A'))
+        if(valid(x, y) && (board[x][y]=='.' || board[x][y] == 'A'|| board[x][y]=='k'))
         {
             board[x][y] ='A';
             y++;
@@ -64,7 +64,7 @@ void rookattack(int r, int c)
     x = r-1;
     while(x>=0)
     {
-        if(valid(x, y) && (board[x][y]=='.' || board[x][y] == 'A'))
+        if(valid(x, y) && (board[x][y]=='.' || board[x][y] == 'A'|| board[x][y]=='k'))
         {
             board[x][y] = 'A';
             x--;
@@ -75,7 +75,7 @@ void rookattack(int r, int c)
     x = r+1;
     while(x<8)
     {
-        if(valid(x, y) && (board[x][y]=='.' || board[x][y] == 'A'))
+        if(valid(x, y) && (board[x][y]=='.' || board[x][y] == 'A'|| board[x][y]=='k'))
         {
             board[x][y] = 'A';
             x++;
@@ -85,13 +85,63 @@ void rookattack(int r, int c)
     }
 }
 
-void bishopattack(int r, int c)
+void rookattackblack(int r, int c)
+{
+    int x = r;
+    int y = c-1;
+    while(y>=0)
+    {
+        if(valid(x, y) && (board[x][y]=='.' || board[x][y] == 'A'|| board[x][y]=='K'))
+        {
+            board[x][y] = 'A';
+            y--;
+        }
+        else
+            break;
+    }
+    y= c+1;
+    while(y<8)
+    {
+        if(valid(x, y) && (board[x][y]=='.' || board[x][y] == 'A'|| board[x][y]=='K'))
+        {
+            board[x][y] ='A';
+            y++;
+        }
+        else
+            break;
+    }
+    y = c;
+    x = r-1;
+    while(x>=0)
+    {
+        if(valid(x, y) && (board[x][y]=='.' || board[x][y] == 'A'|| board[x][y]=='K'))
+        {
+            board[x][y] = 'A';
+            x--;
+        }
+        else
+            break;
+    }
+    x = r+1;
+    while(x<8)
+    {
+        if(valid(x, y) && (board[x][y]=='.' || board[x][y] == 'A'|| board[x][y]=='K'))
+        {
+            board[x][y] = 'A';
+            x++;
+        }
+        else
+            break;
+    }
+}
+
+void bishopattackwhite(int r, int c)
 {
     int x = r+1;
     int y = c+1;
     while(valid(x, y))
     {
-        if((board[x][y]=='.' || board[x][y] == 'A'))
+        if((board[x][y]=='.' || board[x][y] == 'A'|| board[x][y]=='k'))
         {
             board[x][y] = 'A';
             x++;y++;
@@ -105,7 +155,7 @@ void bishopattack(int r, int c)
     y = c-1;
     while(valid(x, y))
     {
-        if((board[x][y]=='.' || board[x][y] == 'A'))
+        if((board[x][y]=='.' || board[x][y] == 'A'|| board[x][y]=='k'))
         {
             board[x][y] = 'A';
             x--;y--;
@@ -119,7 +169,7 @@ void bishopattack(int r, int c)
     y = c-1;
     while(valid(x, y))
     {
-        if((board[x][y]=='.' || board[x][y] == 'A'))
+        if((board[x][y]=='.' || board[x][y] == 'A'|| board[x][y]=='k'))
         {
             board[x][y] = 'A';
             x++;y--;
@@ -133,7 +183,7 @@ void bishopattack(int r, int c)
     y = c+1;
     while(valid(x, y))
     {
-        if((board[x][y]=='.' || board[x][y] == 'A'))
+        if((board[x][y]=='.' || board[x][y] == 'A'|| board[x][y]=='k'))
         {
             board[x][y] = 'A';
             x--;y++;
@@ -144,7 +194,67 @@ void bishopattack(int r, int c)
         }
     }
 }
-void knightattack(int r, int c)
+
+void bishopattackblack(int r, int c)
+{
+    int x = r+1;
+    int y = c+1;
+    while(valid(x, y))
+    {
+        if((board[x][y]=='.' || board[x][y] == 'A'|| board[x][y]=='K'))
+        {
+            board[x][y] = 'A';
+            x++;y++;
+        }
+        else
+        {
+            break;
+        }
+    }
+    x = r-1;
+    y = c-1;
+    while(valid(x, y))
+    {
+        if((board[x][y]=='.' || board[x][y] == 'A'|| board[x][y]=='K'))
+        {
+            board[x][y] = 'A';
+            x--;y--;
+        }
+        else
+        {
+            break;
+        }
+    }
+    x = r+1;
+    y = c-1;
+    while(valid(x, y))
+    {
+        if((board[x][y]=='.' || board[x][y] == 'A'|| board[x][y]=='K'))
+        {
+            board[x][y] = 'A';
+            x++;y--;
+        }
+        else
+        {
+            break;
+        }
+    }
+    x = r-1;
+    y = c+1;
+    while(valid(x, y))
+    {
+        if((board[x][y]=='.' || board[x][y] == 'A'|| board[x][y]=='K'))
+        {
+            board[x][y] = 'A';
+            x--;y++;
+        }
+        else
+        {
+            break;
+        }
+    }
+}
+void knightattackwhite(int r, int c)
 {
     int dx[8] = {-2, -2, -1, -1, 1, 1, 2, 2};
     int dy[8] = {-1, 1, -2, 2, -2, 2, -1, 1};
@@ -152,11 +262,23 @@ void knightattack(int r, int c)
     {
         int x = r + dx[i];
         int y = c + dy[i];
-        if(valid(x, y) && (board[x][y]=='.'))
+        if(valid(x, y) && (board[x][y]=='.'|| board[x][y]=='k'))
             board[x][y] = 'A';
     }
 }
-void kingattack(int r, int c)
+void knightattackblack(int r, int c)
+{
+    int dx[8] = {-2, -2, -1, -1, 1, 1, 2, 2};
+    int dy[8] = {-1, 1, -2, 2, -2, 2, -1, 1};
+    for(int i=0;i<8;i++)
+    {
+        int x = r + dx[i];
+        int y = c + dy[i];
+        if(valid(x, y) && (board[x][y]=='.'|| board[x][y]=='K'))
+            board[x][y] = 'A';
+    }
+}
+void kingattackwhite(int r, int c)
 {
     int dx[8] = {1,1,1,0,0,-1,-1,-1};
     int dy[8] = {-1,0,1,1,-1,-1,0,1};
@@ -164,40 +286,68 @@ void kingattack(int r, int c)
     {
         int x = r + dx[i];
         int y = c + dy[i];
-        if(valid(x, y) && board[x][y] == '.')
+        if(valid(x, y) && (board[x][y] == '.'|| board[x][y]=='k'))
             board[x][y] = 'A';
     }
 }
-void queenattack(int r, int c)
+void kingattackblack(int r, int c)
 {
-    bishopattack(r, c);
-    rookattack(r, c);
-    kingattack(r, c);
+    int dx[8] = {1,1,1,0,0,-1,-1,-1};
+    int dy[8] = {-1,0,1,1,-1,-1,0,1};
+    for(int i=0;i<8;i++)
+    {
+        int x = r + dx[i];
+        int y = c + dy[i];
+        if(valid(x, y) && (board[x][y] == '.'|| board[x][y]=='K'))
+            board[x][y] = 'A';
+    }
+}
+void queenattackwhite(int r, int c)
+{
+    bishopattackwhite(r, c);
+    rookattackwhite(r, c);
+    kingattackwhite(r, c);
+}
+void queenattackblack(int r, int c)
+{
+    bishopattackblack(r, c);
+    rookattackblack(r, c);
+    kingattackblack(r, c);
 }
 int main()
 {
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
     string tmp;
+    int cnt=1;
     while(1)
     {
 
-        int i=0,j=0;
+        int i=0,j=0,p=-1,q=-1,r=-1,s=-1;
         for(i=0;i<8;i++)
         {
-            getline(cin,tmp;)
+            getline(cin,tmp);
             for(j=0;j<8;j++)
             {
 
                 board[i][j] = tmp[j];
+                if(board[i][j] == 'k')
+                {
+                    p=i,q=j;
+                }
+                if(board[i][j] == 'K')
+                {
+                    r=i,s=j;
+                }
             }
         }
+//        cout << p << q << r << s << endl;
         bool f = true;
         for(i =0;i<8;i++)
         {
             for(j=0;j<8;j++)
             {
-                if(board[i][i] != '.')
+                if(board[i][j] != '.')
                 {
                     f= false;break;
                 }
@@ -206,6 +356,7 @@ int main()
         }
         if(f) break;
         getline(cin, tmp);
+        ans = -2;
         for(int i=0;i<8;i++)
         {
             for(int j=0;j<8;j++)
@@ -218,38 +369,71 @@ int main()
                 {
                     pawnattackwhite(i, j);
                 }
-                else if(board[i][j] == 'r' || board[i][j] == 'R')
+                else if(board[i][j] == 'R')
                 {
-                    rookattack(i, j);
+                    rookattackwhite(i, j);
                 }
-                else if(board[i][j] == 'N' || board[i][j] == 'n')
+                else if(board[i][j] == 'r')
                 {
-                    knightattack(i,j);
+                    rookattackblack(i, j);
                 }
-                else if(board[i][j] == 'B' || board[i][j] == 'b')
+                else if(board[i][j] == 'N')
                 {
-                    bishopattack(i, j);
+                    knightattackwhite(i,j);
                 }
-                else if(board[i][j] == 'Q' || board[i][j] == 'q')
+                else if(board[i][j] == 'n')
                 {
-                    queenattack(i,j);
+                    knightattackblack(i,j);
                 }
-                else if(board[i][j] == 'K' || board[i][j]=='k')
+                else if(board[i][j] == 'B')
                 {
-                    kingattack(i,j);
+                    bishopattackwhite(i, j);
+                }
+                else if(board[i][j] == 'b')
+                {
+                    bishopattackblack(i, j);
+                }
+                else if(board[i][j] == 'Q')
+                {
+                    queenattackwhite(i,j);
+                }
+                else if(board[i][j] == 'q')
+                {
+                    queenattackblack(i,j);
+                }
+                else if(board[i][j] == 'K')
+                {
+                    kingattackwhite(i,j);
+                }
+                else if(board[i][j]=='k')
+                {
+                    kingattackblack(i,j);
                 }
             }
         }
-        int ans = -1;
-        for(i=0;i<8;i++)
+//        int ans = -1;
+//        for(i=0;i<8;i++)
+//        {
+//            for(j=0;j<8;j++)
+//            {
+//                if(board[i][j] == 'k')
+//                    ans++;
+//            }
+//        }
+//        cout << ans << endl;
+        if(p!=-1 && board[p][q] == 'A')
         {
-            for(j=0;j<8;j++)
-            {
-                if(board[i][j] == 'k')
-                    ans++;
-            }
+            printf("Game #%d: black king is in check.\n",cnt);
         }
-        cout << ans << endl;
+        else if(r!=-1 && board[r][s] == 'A')
+        {
+            printf("Game #%d: white king is in check.\n",cnt);
+        }
+        else
+        {
+            printf("Game #%d: no king is in check.\n",cnt);
+        }
+        cnt++;
     }
     return 0;
 }
