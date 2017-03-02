@@ -1,20 +1,30 @@
 #include<bits/stdc++.h>
 using namespace std;
-bool compare(char a, char b)
+bool compare (char a, char b)
 {
-    int x,y;
-    if(a >= 'a' && a <= 'z')
-        x = a - 'a';
+    bool minisculaA = true, minisculaB = true;
+    if (a >= 'A' && a <= 'Z')
+        minisculaA = false;
+    if (b >= 'A' && b <= 'Z')
+        minisculaB = false;
+
+    //Both are upper or lower case
+    if (minisculaA && minisculaB)
+        return a < b;
+    if (!minisculaA && !minisculaB)
+        return a < b;
+
+    //a it's a lowercase
+    if (minisculaA)
+    {
+        a -= ('a'-'A');
+        return a < b;
+    }
     else
-        x = a - 'A';
-    if(b>= 'a' && b <= 's')
-        y = b - 'a';
-    else y = b - 'A';
-    if(x>y)
-        return false;
-    else if(x==y)
-    return a<b;
-    return a > b;
+    {
+        b -= ('a'-'A');
+        return a <= b;
+    }
 }
 int main()
 {
@@ -30,7 +40,7 @@ int main()
     do
     {
       cout << a << endl;
-    }while(next_permutation(a.begin(), a.end()));
+    }while(next_permutation(a.begin(), a.end(), compare));
   }
   return 0;
 }
